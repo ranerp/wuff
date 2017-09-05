@@ -124,7 +124,7 @@ class OsgiBundleConfigurer extends JavaConfigurer {
         // i.e. when the project contains no java/groovy classes (resources-only project)
         project.sourceSets.main.output.classesDir.mkdirs()
         generatedManifestFile.parentFile.mkdirs()
-        generatedManifestFile.withWriter { createManifest().writeTo it }
+        generatedManifestFile.withOutputStream { createManifest().writeTo it }
       }
     }
   } // configureTask_createOsgiManifest
@@ -341,23 +341,27 @@ class OsgiBundleConfigurer extends JavaConfigurer {
     super.createConfigurations()
     if(!project.configurations.findByName('publicLib')) {
       Configuration configuration = project.configurations.create('publicLib')
-      project.sourceSets.each { it.compileClasspath += [configuration] }
+      project.sourceSets.each {
+        it.compileClasspath += configuration
+      }
 
       if (project.plugins.hasPlugin('idea'))
-        project.idea.module.scopes.COMPILE.plus += [configuration]
+        project.idea.module.scopes.COMPILE.plus += configuration
 
       if (project.plugins.hasPlugin('eclipse'))
-        project.eclipse.classpath.plusConfigurations += [configuration]
+        project.eclipse.classpath.plusConfigurations += configuration
     }
     if(!project.configurations.findByName('privateLib')) {
       Configuration configuration = project.configurations.create('privateLib')
-      project.sourceSets.each { it.compileClasspath += [configuration] }
+      project.sourceSets.each {
+        it.compileClasspath += configuration
+      }
 
       if (project.plugins.hasPlugin('idea'))
-        project.idea.module.scopes.COMPILE.plus += [configuration]
+        project.idea.module.scopes.COMPILE.plus += configuration
 
       if (project.plugins.hasPlugin('eclipse'))
-        project.eclipse.classpath.plusConfigurations += [configuration]
+        project.eclipse.classpath.plusConfigurations += configuration
     }
   }
 

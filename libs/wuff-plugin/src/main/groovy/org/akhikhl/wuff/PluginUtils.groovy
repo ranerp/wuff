@@ -174,7 +174,7 @@ final class PluginUtils {
    * @return java.io.File, pointing to 'plugin_customization.ini', or null, if such file does not exist.
    */
   static File findPluginCustomizationFile(Project project) {
-    File result = ([project.projectDir] + project.sourceSets.main.resources.srcDirs).findResult { File dir ->
+    File result = (project.sourceSets.main.resources.srcDirs).findResult { File dir ->
       File f = new File(dir, 'plugin_customization.ini')
       f.exists() ? f : null
     }
@@ -187,7 +187,7 @@ final class PluginUtils {
     String prefix = language ? "nl/$language/" : ''
     String relPath = "${prefix}intro/welcome.html"
     String relPath2 = "${prefix}intro/welcome.htm"
-    File result = ([project.projectDir] + project.sourceSets.main.resources.srcDirs).findResult { File dir ->
+    File result = (project.sourceSets.main.resources.srcDirs).findResult { File dir ->
       File f = new File(dir, relPath)
       if(!f.exists())
         f = new File(dir, relPath2)
@@ -201,7 +201,7 @@ final class PluginUtils {
   static File findPluginIntroXmlFile(Project project, String language = null) {
     String prefix = language ? "nl/$language/" : ''
     String relPath = "${prefix}intro/introContent.xml"
-    File result = ([project.projectDir] + project.sourceSets.main.resources.srcDirs).findResult { File dir ->
+    File result = (project.sourceSets.main.resources.srcDirs).findResult { File dir ->
       File f = new File(dir, relPath)
       f.exists() ? f : null
     }
@@ -211,7 +211,7 @@ final class PluginUtils {
   }
 
   static File findPluginManifestFile(Project project) {
-    File result = ([project.projectDir] + project.sourceSets.main.resources.srcDirs).findResult { File dir ->
+    File result = (project.sourceSets.main.resources.srcDirs).findResult { File dir ->
       File f = new File(dir, 'META-INF/MANIFEST.MF')
       f.exists() ? f : null
     }
@@ -221,7 +221,7 @@ final class PluginUtils {
   }
 
   static File findPluginSplashFile(Project project) {
-    File result = ([project.projectDir] + project.sourceSets.main.resources.srcDirs).findResult { File dir ->
+    File result = (project.sourceSets.main.resources.srcDirs).findResult { File dir ->
       File f = new File(dir, 'splash.bmp')
       f.exists() ? f : null
     }
@@ -237,7 +237,7 @@ final class PluginUtils {
    * @return java.io.File, pointing to 'plugin.xml', or null, if such file does not exist.
    */
   static File findPluginXmlFile(Project project) {
-    File result = ([project.projectDir] + project.sourceSets.main.resources.srcDirs).findResult { File dir ->
+    File result = (project.sourceSets.main.resources.srcDirs).findResult { File dir ->
       File f = new File(dir, 'plugin.xml')
       f.exists() ? f : null
     }

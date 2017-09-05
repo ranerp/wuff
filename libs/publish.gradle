@@ -35,6 +35,18 @@ def configurePom = {
       name thisProject.developerName
     }
   }
+
+  dependencies {
+    configurations.compile.resolvedConfiguration.firstLevelModuleDependencies.each { artifact ->
+      def id = artifact.module.id
+      dependency {
+        groupId id.group
+        artifactId id.name
+        version id.version
+        scope "compile"
+      }
+    }
+  }
 }
 
 publishing {
