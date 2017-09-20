@@ -11,6 +11,19 @@ Wuff is a gradle plugin for developing and assembling OSGi/Eclipse applications 
 
 #### What's new :star:
 
+### Version 0.0.22 (Unofficial release)
+
+- Changed += operator to << in OsgiBundleConfigurer as it correct behaviour and not deprecated when we are not using it with iterator.
+
+### Version 0.0.21 (Unofficial release)
+
+- Added dependencies to publish pom.
+- Upgraded gradle version.
+- Added new Eclipses to defaultConfig.
+- Changed Cologne mirror as it is not available anymore.
+- Modified OsgiBundleConfigurer to support gradle 3.+.
+- Changed PluginsUtil to only look files in the resources directory, so it'll be possible to use bnd-tools autogeneration.
+
 ### Version 0.0.20
 
 - introduced publicLib configuration for eclipse bundles and applications.
