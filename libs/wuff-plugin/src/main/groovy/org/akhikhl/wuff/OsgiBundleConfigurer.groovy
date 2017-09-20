@@ -346,10 +346,10 @@ class OsgiBundleConfigurer extends JavaConfigurer {
       }
 
       if (project.plugins.hasPlugin('idea'))
-        project.idea.module.scopes.COMPILE.plus += configuration
+        project.idea.module.scopes.COMPILE.plus << configuration
 
       if (project.plugins.hasPlugin('eclipse'))
-        project.eclipse.classpath.plusConfigurations += configuration
+        project.eclipse.classpath.plusConfigurations << configuration
     }
     if(!project.configurations.findByName('privateLib')) {
       Configuration configuration = project.configurations.create('privateLib')
@@ -358,10 +358,10 @@ class OsgiBundleConfigurer extends JavaConfigurer {
       }
 
       if (project.plugins.hasPlugin('idea'))
-        project.idea.module.scopes.COMPILE.plus += configuration
+        project.idea.module.scopes.COMPILE.plus << configuration
 
       if (project.plugins.hasPlugin('eclipse'))
-        project.eclipse.classpath.plusConfigurations += configuration
+        project.eclipse.classpath.plusConfigurations << configuration
     }
   }
 
